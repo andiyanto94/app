@@ -16,3 +16,8 @@ Route::get('/', 'HomeController@index');
 Route::auth();
 
 Route::get('/profile', 'ProfileController@index');
+
+Route::post('/createpost',[
+	'uses'=>'PostController@postCreatePost',
+	'as'=>'post.create'
+]);

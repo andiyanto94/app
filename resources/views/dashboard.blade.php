@@ -21,7 +21,7 @@
 	@section('content')
 	<!-- BEGIN CONTENT-->
 	<div id="content" style="margin-top: 20px;">
-@include('includes.message-block')
+
 		<section>
 			<div class="section-body no-margin">
 				<div class="row">
@@ -39,8 +39,10 @@
 									<span class="text-lg text-bold"><i class="md md-alarm-on"></i> Carrent activity today.</span>
 								</div>
 							@endif
+								@include('includes.message-block')
 						</div><!--end .col -->
 						<!-- END ALERT - REVENUE -->
+
 						<!-- BEGIN MESSAGE ACTIVITY -->
 						<div class="card panel ink-reaction" style="margin-bottom: 0px;">
 							<a href="#">
@@ -51,13 +53,13 @@
 								</div>
 							</div></a>
 							<div id="accordion7-4" class="collapse">
-								<form class="form form-validate" action="#" accept-charset="utf-8" method="post" novalidate="novalidate">
+								<form class="form form-validate" action="{{ route('post.create') }}" accept-charset="utf-8" method="post" novalidate="novalidate">
 									{{ csrf_field() }}
 									<div class="card no-margin">
 										<div class="card-body">
 											<div class="floating-label form-group">
-												<textarea name="body" id="body" class="form-control autosize" rows="1" required data-rule-minlength="6"></textarea>
-												<label for="status">What's on your mind?</label>
+												<textarea name="body" id="body" class="form-control autosize" rows="1" required ></textarea>
+												<label for="status">What's your planning?</label>
 											</div>
 										</div><!--end .card-body -->
 										<div class="card-actionbar">
@@ -69,7 +71,7 @@
 												</div>
 												<a href="javascript:void(0);" class="btn btn-flat btn-accent ink-reaction" data-toggle="collapse" data-parent="#accordion7" data-target="#accordion7-4">Cancel</a>
 												<button type="submit" class="btn btn-flat btn-accent ink-reaction">Post</button>
-
+												<input type="hidden" value="{{ Session::token() }}" name="_token" >
 											</div><!--end .card-actionbar-row -->
 										</div><!--end .card-actionbar -->
 									</div><!--end .card -->
@@ -77,116 +79,8 @@
 							</div>
 						</div><!--end .panel -->
 
-						<div class="tab-pane" id="activity">
-							<ul class="timeline collapse-lg timeline-hairline">
+						@include('includes.timeline')
 
-								<li>
-									<div class="timeline-circ circ-xl style-primary-dark"><i class="md md-access-time"></i></div>
-									<div class="timeline-entry">
-										<div class="card style-default-light">
-											<div class="card-body small-padding">
-												<img class="img-circle img-responsive pull-left width-1" src="public/img/uploads/avatars/default.png?1404026449') }}" alt="" />
-													<span class="text-medium">10;22 at <span class="text-primary">8:15 pm</span></span><br/>
-															<span class="opacity-50">
-																pada tanggl
-															</span>
-
-												<p>ini isinya</p>
-												<img class="img-responsive" src="{{URL::to('public/img/icon/img14.jpg?1404589160')}}" alt="" />
-											</div>
-											<div class="collapse" id="comment">
-												<div class="card-body height-12 scroll style-default-bright">
-												<ul class="list-comments" style="margin-right: 20px;">
-													<li>
-														<div class="card">
-															<div class="comment-avatar"><i class="glyphicon glyphicon-user opacity-50"></i></div>
-															<div class="card-body small-padding">
-																<h4 class="comment-title">Jim Peters <small>20/06/2013 at 4:02 pm</small></h4>
-																<a class="btn btn-default-dark stick-top-right" href="#respond">Reply</a>
-																<p>Etiam dui libero, tempor quis congue in, interdum eget tortor. Vivamus aliquam dictum lacus quis tincidunt. Phasellus rhoncus ante sollicitudin nisl consectetur ultricies. Sed rhoncus ullamcorper mauris, ac condimentum metus egestas ut. Nam et urna ante, vitae pretium lacus.</p>
-															</div>
-														</div><!--end .card -->
-													</li><!-- end comment -->
-													<li>
-														<div class="card">
-															<div class="comment-avatar"><span class="glyphicon glyphicon-user opacity-50"></span></div>
-															<div class="card-body">
-																<h4 class="comment-title">CarolSharp <small>20/06/2013 at 4:14 pm</small></h4>
-																<a class="btn btn-default-dark stick-top-right" data-toggle="collapse" data-target="#respond">Reply</a>
-																<p>Integer ac magna lacinia velit bibendum ornare. Morbi eget dui lectus, eget eleifend mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-															</div>
-															<div id="respond" class="collapse" style="margin-left: 15px; margin-bottom: 15px; border-top: 1px #ccceca solid;">
-																<form class="form form-validate" action="" accept-charset="utf-8" novalidate="novalidate" method="post">
-																	<div class="form-group floating-label" style="margin-top: 0px;">
-																		<div class="input-group">
-																			<div class="input-group-content">
-																				<input type="text" class="form-control" id="groupbutton10">
-																				<label for="groupbutton10">Reply</label>
-																			</div>
-																			<div class="input-group-btn">
-																				<button class="btn btn-success ink-reaction" type="button">Reply</button>
-																			</div>
-																		</div>
-																	</div>
-																</form>
-															</div>
-														</div><!--end .card -->
-														<ul>
-															<li>
-																<div class="card">
-																	<div class="comment-avatar"><img class="img-circle" src="{{URL::to('public/img/icon/avatar1.jpg?1403934956')}}" alt="" /></div>
-																	<div class="card-body">
-																		<h4 class="comment-title">Daniel Johnson <small>20/06/2013 at 4:38 pm</small></h4>
-																		<p>Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer ac magna lacinia velit bibendum ornare. Morbi eget dui lectus, eget eleifend mi.</p>
-																	</div>
-																</div><!--end .card -->
-															</li><!-- end sub-comment -->
-															<li>
-																<div class="card">
-																	<div class="comment-avatar"><span class="glyphicon glyphicon-user opacity-50"></span></div>
-																	<div class="card-body">
-																		<h4 class="comment-title">Amber Page <small>20/06/2013 at 4:41 pm</small></h4>
-																		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in tempus lorem. Vivamus ullamcorper leo risus, non vehicula odio.</p>
-																	</div>
-																</div><!--end .card -->
-															</li><!-- end sub-comment -->
-														</ul>
-													</li><!-- end comment -->
-												</ul>
-													</div>
-											</div>
-											<div class="card-actionbar">
-												<div class="card-actionbar-row">
-													<a href="javascript:void(0);" class="btn btn-icon-toggle btn-danger ink-reaction pull-left"><i class="fa fa-heart"></i></a>
-													<a href="javascript:void(0);" class="btn btn-icon-toggle btn-default ink-reaction pull-left collapsed" data-toggle="collapse" data-target="#reaction"><i class="fa fa-reply"></i></a>
-													<a href="javascript:void(0);" class="ink-reaction pull-right collapsed" data-toggle="collapse" data-target="#comment">Comments</a>
-
-												</div>
-											</div><!--end .card-actionbar -->
-											<!-- card action -->
-											<div id="reaction" class="collapse" style="margin-left: 15px; margin-bottom: 15px; border-top: 1px #ccceca solid;">
-												<form class="form form-validate" action="" accept-charset="utf-8" novalidate="novalidate" method="post">
-													<div class="form-group floating-label" style="margin-top: 0px;">
-														<div class="input-group">
-															<div class="input-group-content">
-																<input type="text" class="form-control" id="groupbutton10">
-																<label for="groupbutton10">Reply</label>
-															</div>
-															<div class="input-group-btn">
-																<button class="btn btn-success ink-reaction" type="button">Reply</button>
-															</div>
-														</div>
-													</div>
-												</form>
-											</div>
-
-										</div>
-									</div><!--end .timeline-entry -->
-								</li>
-
-							</ul>
-						</div><!--end #activity -->
 					</div><!--end .col -->
 					<!-- END MESSAGE ACTIVITY -->
 
@@ -196,114 +90,13 @@
 						@if(Auth::guest())
 							test
 						@else
+							@include('includes.pending')
 
-						<div class="card card-underline style-default-bright">
-							<div class="card-head">
-								<header class="opacity-75"><small>Pending</small></header>
-								<div class="tools">
-									<form class="navbar-search" role="search">
-										<div class="form-group">
-											<input type="text" class="form-control" name="friendSearch" placeholder="Enter your keyword">
-										</div>
-										<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
-									</form>
-								</div><!--end .tools -->
-							</div><!--end .card-head -->
-							<div class="card-body no-padding">
-								<ul class="list" data-sortable="true">
-
-									<li class="tile">
-										<div class="checkbox checkbox-styled tile-text">
-											<label>
-												<input type="checkbox">
-														<span>
-															isinya
-														</span>
-											</label>
-										</div>
-										<a class="btn btn-flat ink-reaction btn-default">
-											<i class="fa fa-edit"></i>
-										</a>
-										<a class="btn btn-flat ink-reaction btn-default">
-											<i class="md md-play-arrow"></i>
-										</a>
-									</li>
-
-								</ul>
-							</div><!--end .card-body -->
-						</div><!--end .card -->
+							@include('includes.personal-info')
 
 
-						<div class="card card-underline style-default-bright">
-							<div class="card-head">
-								<header class="opacity-75"><small>Personal info</small></header>
-								<div class="tools">
-									<a class="btn btn-icon-toggle ink-reaction"><i class="md md-edit"></i></a>
-								</div><!--end .tools -->
-							</div><!--end .card-head -->
-							<div class="card-body no-padding">
-								<ul class="list">
-									<li class="tile">
-										<a class="tile-content ink-reaction">
-											<div class="tile-icon">
-												<img src="public/img/uploads/avatars/{{ Auth::user()->avatar }}" alt="" />
-											</div>
-											<div class="tile-text">
-												{{ Auth::user()->name }}
-												<small>
-													{{ Auth::user()->email }}
-												</small>
-											</div>
-										</a>
-									</li>
-									<li class="tile">
-										<a class="tile-content ink-reaction">
-											<div class="tile-icon">
-												<i class="md md-location-on"></i>
-											</div>
-											<div class="tile-text">
-												621 Johnson Ave, Suite 600
-												<small>Street</small>
-											</div>
-										</a>
-									</li>
-									<li class="tile">
-										<a class="tile-content ink-reaction">
-											<div class="tile-icon"></div>
-											<div class="tile-text">
-												San Francisco, CA 54321
-												<small>City</small>
-											</div>
-										</a>
-									</li>
-									<li class="divider-inset"></li>
-									<li class="tile">
-										<a class="tile-content ink-reaction">
-											<div class="tile-icon">
-												<i class="fa fa-phone"></i>
-											</div>
-											<div class="tile-text">
-												(123) 456-7890
-												<small>Mobile</small>
-											</div>
-										</a>
-									</li>
-									<li class="tile">
-										<a class="tile-content ink-reaction">
-											<div class="tile-icon"></div>
-											<div class="tile-text">
-												(323) 555-6789
-												<small>Work</small>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div><!--end .card-body -->
-						</div><!--end .card -->
 						@endif
-							<hr>
-							<em class="text-caption">Copyright &copy; 2016</span> <strong><a href="/da">Daily Activity</a> &centerdot;
-									<a href="#">Help</a> &centerdot; <a href="#">term</a></em>
+							@include('includes.copyright')
 					</div><!--end .col -->
 					<!-- END PROFILE MENUBAR -->
 
@@ -315,7 +108,7 @@
 	<!-- END CONTENT -->
 @endsection
 
-		@section('js')
+@section('js')
 <!-- BEGIN JAVASCRIPT -->
 <script src="{{ URL::to('public/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 <script src="{{ URL::to('public/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $posts = Post::orderBy('created_at','desc')->get();
+        return view('dashboard', [
+            'posts' => $posts
+        ]);
     }
 }
