@@ -175,7 +175,7 @@
 								</span>
 						</a>
 						<ul class="dropdown-menu animation-dock">
-							<li><a href="{{ url('/profile') }}"><i class="fa fa-fw fa-user text-success"></i> My profile</a></li>
+							<li><a href="{{ url('/me') }}"><i class="fa fa-fw fa-user text-success"></i> My profile</a></li>
 							<li><a href="../../html/pages/calendar.html"><i class="md  md-assignment text-info"></i> My appointments</a></li>
 							<li class="divider"></li>
 							<li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>

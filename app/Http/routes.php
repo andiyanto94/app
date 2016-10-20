@@ -10,14 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+	Route::get('/', 'HomeController@index');
 
-Route::get('/', 'HomeController@index');
+	Route::auth();
 
-Route::auth();
+	Route::get('/me', 'ProfileController@index');
 
-Route::get('/profile', 'ProfileController@index');
+	Route::post('/createpost',
+	[
+		'uses'=>'PostController@postCreatePost',
+		'as'=>'post.create'
+	]);
 
-Route::post('/createpost',[
-	'uses'=>'PostController@postCreatePost',
-	'as'=>'post.create'
-]);
+	Route::get('/{id}', 'ProfileController@show');
+
+	Route::get('/pending', 'HomeController@pending');

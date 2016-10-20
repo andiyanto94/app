@@ -10,7 +10,7 @@
 									</form>
 								</div><!--end .tools -->
 							</div><!--end .card-head -->
-							<div class="card-body no-padding">
+							<div class="card-body no-padding height-10 scroll">
 								<ul class="list" data-sortable="true">
 									@foreach($posts as $post)
 									<li class="tile">

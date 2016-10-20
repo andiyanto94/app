@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\User;
+
 class ProfileController extends Controller
 {
 	public function __construct()
@@ -15,5 +17,9 @@ class ProfileController extends Controller
 	public function index()
 	{
 		return view('profile');
+	}
+	public function show($id) {
+
+		return view('showprofile', ['user' => User::findOrFail($id)]);
 	}
 }

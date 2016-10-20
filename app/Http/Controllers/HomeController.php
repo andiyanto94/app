@@ -30,4 +30,13 @@ class HomeController extends Controller
             'posts' => $posts
         ]);
     }
+    public function pending()
+    {
+	    $pendings = DB::table('posts') ->whereColumn(
+	    	[
+	    		['status', '=', 'pending'],
+			    ['confirmed', '=', 'unconfirmed']
+		    ])->get();
+    	return view('includes/pending');
+    }
 }
