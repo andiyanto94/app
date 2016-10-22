@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
+
+use DB;
+
 use App\User;
 
 class ProfileController extends Controller
@@ -16,7 +20,17 @@ class ProfileController extends Controller
 	}
 	public function index()
 	{
-		return view('profile');
+		//$posts = DB::table('posts') ->where('user_id',auth()->id())->get();
+
+		$posts = Post::orderBy('created_at','desc')->where('user_id',auth()->id())->get();
+
+		//return view('dashboard', [
+		//	'posts' => $posts
+		//]);
+
+		return view('profile', [
+			'posts' => $posts
+		]);
 	}
 	public function show($id) {
 

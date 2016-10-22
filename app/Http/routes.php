@@ -25,3 +25,19 @@
 	Route::get('/{id}', 'ProfileController@show');
 
 	Route::get('/pending', 'HomeController@pending');
+
+	Route::get('/redirect','SocialAuthController@redirect');
+
+	Route::get('/callback','SocialAuthController@callback');
+
+	Route::group(['middleware' => 'web'], function (){
+		Route::get('auth/facebook', [
+			'as' => 'auth-facebook',
+			'uses' => 'SocialAuthController@redirect'
+		]);
+
+		Route::get('auth/facebook/callback', [
+			'as' => 'facebook-callback',
+			'uses' => 'SocialAuthController@callback'
+		]);
+	});

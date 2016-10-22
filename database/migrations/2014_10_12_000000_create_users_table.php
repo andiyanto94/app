@@ -16,14 +16,16 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('avatar')->default('default.png');
             $table->string('address');
-            $table->string('office_id');
+            $table->string('employee_id');
             $table->string('boss_id');
             $table->string('gender');
             $table->string('tlp');
             $table->string('birth');
+	        $table->string('followings');
+	        $table->string('followers');
             $table->string('status');
             $table->rememberToken();
             $table->timestampsTz();
